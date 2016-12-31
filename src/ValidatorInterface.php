@@ -17,7 +17,7 @@ interface ValidatorInterface
      *
      * @return bool
      */
-    public function isValid($value): bool;
+    public function __invoke($value): bool;
 
     /**
      * Set the parameters.
