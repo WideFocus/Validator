@@ -6,6 +6,8 @@
 
 namespace WideFocus\Validator;
 
+use ArrayAccess;
+
 /**
  * Contains a list of validators.
  */
@@ -23,13 +25,15 @@ interface ValidatorContainerInterface
     /**
      * Get a validator.
      *
-     * @param string $name
+     * @param string      $name
+     * @param ArrayAccess $context
      *
      * @return callable
-     *
-     * @throws InvalidValidatorException When the validator does not exist.
      */
-    public function getValidator(string $name): callable;
+    public function getValidator(
+        string $name,
+        ArrayAccess $context = null
+    ): callable;
 
     /**
      * Add a validator.
