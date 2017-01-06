@@ -31,6 +31,16 @@ trait ContextAwareValidatorTrait
     }
 
     /**
+     * Whether a context has been set.
+     *
+     * @return bool
+     */
+    protected function hasContext(): bool
+    {
+        return $this->context !== null;
+    }
+
+    /**
      * Get the context to be used during validation.
      *
      * @return ArrayAccess
