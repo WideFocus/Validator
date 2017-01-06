@@ -6,8 +6,9 @@
 
 namespace WideFocus\Validator;
 
-use ArrayAccess;
-
+/**
+ * Interface for validators.
+ */
 interface ValidatorInterface
 {
     /**
@@ -18,22 +19,4 @@ interface ValidatorInterface
      * @return bool
      */
     public function __invoke($value): bool;
-
-    /**
-     * Set the parameters.
-     *
-     * @param array $parameters
-     *
-     * @return ValidatorInterface
-     */
-    public function setParameters(array $parameters): ValidatorInterface;
-
-    /**
-     * Set the context to be used during validation.
-     *
-     * @param ArrayAccess $context
-     *
-     * @return ValidatorInterface
-     */
-    public function setContext(ArrayAccess $context): ValidatorInterface;
 }
