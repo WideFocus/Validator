@@ -10,7 +10,7 @@ use ArrayAccess;
 use WideFocus\Validator\ContextAwareValidatorInterface;
 use WideFocus\Validator\ContextAwareValidatorTrait;
 
-class ContextAwareValidator implements ContextAwareValidatorInterface
+class ContextAwareValidatorDouble implements ContextAwareValidatorInterface
 {
     use ContextAwareValidatorTrait;
 
