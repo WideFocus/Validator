@@ -8,6 +8,9 @@ namespace WideFocus\Validator\Logical;
 
 use WideFocus\Validator\ValidatorInterface;
 
+/**
+ * Validates whether a value evaluates to true.
+ */
 class LogicalTrueValidator implements ValidatorInterface
 {
     /**
