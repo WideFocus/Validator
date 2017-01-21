@@ -14,8 +14,6 @@ use WideFocus\Validator\Tests\TestDouble\ConfigurableValidatorDouble;
  */
 class ConfigurableValidatorTraitTest extends PHPUnit_Framework_TestCase
 {
-    use CommonValidatorMocksTrait;
-
     /**
      * @param array $parameters
      * @param array $expected

@@ -15,8 +15,6 @@ use WideFocus\Validator\Tests\TestDouble\ContextAwareValidatorDouble;
  */
 class ContextAwareValidatorTraitTest extends PHPUnit_Framework_TestCase
 {
-    use CommonValidatorMocksTrait;
-
     /**
      * @param ArrayAccess|null $context
      *
@@ -44,7 +42,7 @@ class ContextAwareValidatorTraitTest extends PHPUnit_Framework_TestCase
     {
         return [
             [
-                $this->createArrayAccessMock()
+                $this->createMock(ArrayAccess::class)
             ],
             [
                 null

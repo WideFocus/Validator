@@ -8,15 +8,13 @@ namespace WideFocus\Validator\Tests\Logical;
 
 use ArrayIterator;
 use WideFocus\Validator\Logical\LogicalAndValidator;
-use WideFocus\Validator\Tests\CommonValidatorMocksTrait;
+use WideFocus\Validator\ValidatorInterface;
 
 /**
  * @coversDefaultClass \WideFocus\Validator\Logical\LogicalAndValidator
  */
 class LogicalAndValidatorTest extends \PHPUnit_Framework_TestCase
 {
-    use CommonValidatorMocksTrait;
-
     /**
      * @return LogicalAndValidator
      *
@@ -25,7 +23,7 @@ class LogicalAndValidatorTest extends \PHPUnit_Framework_TestCase
     public function testConstructor(): LogicalAndValidator
     {
         return new LogicalAndValidator(
-            $this->createValidatorMock()
+            $this->createMock(ValidatorInterface::class)
         );
     }
 
@@ -44,7 +42,7 @@ class LogicalAndValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvoke($value, int $expectedCalls, bool $expected)
     {
-        $trueValidator = $this->createValidatorMock();
+        $trueValidator = $this->createMock(ValidatorInterface::class);
         $trueValidator->expects($this->exactly($expectedCalls))
             ->method('__invoke')
             ->willReturnArgument(0);
