@@ -1,14 +1,14 @@
 {
     "name": "widefocus/validator",
-    "description": "This package contains contains validators to validate values.",
+    "description": "This package contains validators to validate values.",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "prefer-stable": true,
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Ashoka de Wit",
-            "email": "contact@widefocus.net"
+            "email": "ashoka@widefocus.net"
         }
     ],
     "require": {
