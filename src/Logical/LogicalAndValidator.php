@@ -17,30 +17,30 @@ class LogicalAndValidator implements ValidatorInterface
     /**
      * @var callable
      */
-    private $logicalTrueValidator;
+    private $boolValidator;
 
     /**
      * Constructor.
      *
-     * @param callable $logicalTrueValidator
+     * @param callable $boolValidator
      */
-    public function __construct(callable $logicalTrueValidator)
+    public function __construct(callable $boolValidator)
     {
-        $this->logicalTrueValidator = $logicalTrueValidator;
+        $this->boolValidator = $boolValidator;
     }
 
     /**
      * Validate a value.
      *
-     * @param mixed $value
+     * @param mixed $input
      *
      * @return bool
      */
-    public function __invoke($value): bool
+    public function __invoke($input): bool
     {
-        return is_array($value) || $value instanceof Traversable
-            ? $this->validateTraversable($value)
-            : $this->validateItem($value);
+        return is_array($input) || $input instanceof Traversable
+            ? $this->validateTraversable($input)
+            : $this->validateItem($input);
     }
 
     /**
@@ -72,7 +72,7 @@ class LogicalAndValidator implements ValidatorInterface
     protected function validateItem($item): bool
     {
         return call_user_func(
-            $this->logicalTrueValidator,
+            $this->boolValidator,
             $item
         );
     }
