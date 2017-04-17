@@ -7,23 +7,27 @@
 namespace WideFocus\Validator\Tests\Logical;
 
 use ArrayIterator;
+use PHPUnit\Framework\TestCase;
 use WideFocus\Validator\Logical\LogicalOrValidator;
 use WideFocus\Validator\ValidatorInterface;
 
 /**
  * @coversDefaultClass \WideFocus\Validator\Logical\LogicalOrValidator
  */
-class LogicalOrValidatorTest extends \PHPUnit_Framework_TestCase
+class LogicalOrValidatorTest extends TestCase
 {
     /**
-     * @return LogicalOrValidator
+     * @return void
      *
      * @covers ::__construct
      */
-    public function testConstructor(): LogicalOrValidator
+    public function testConstructor()
     {
-        return new LogicalOrValidator(
-            $this->createMock(ValidatorInterface::class)
+        $this->assertInstanceOf(
+            LogicalOrValidator::class,
+            new LogicalOrValidator(
+                $this->createMock(ValidatorInterface::class)
+            )
         );
     }
 

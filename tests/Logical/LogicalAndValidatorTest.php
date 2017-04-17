@@ -7,23 +7,27 @@
 namespace WideFocus\Validator\Tests\Logical;
 
 use ArrayIterator;
+use PHPUnit\Framework\TestCase;
 use WideFocus\Validator\Logical\LogicalAndValidator;
 use WideFocus\Validator\ValidatorInterface;
 
 /**
  * @coversDefaultClass \WideFocus\Validator\Logical\LogicalAndValidator
  */
-class LogicalAndValidatorTest extends \PHPUnit_Framework_TestCase
+class LogicalAndValidatorTest extends TestCase
 {
     /**
-     * @return LogicalAndValidator
+     * @return void
      *
      * @covers ::__construct
      */
-    public function testConstructor(): LogicalAndValidator
+    public function testConstructor()
     {
-        return new LogicalAndValidator(
-            $this->createMock(ValidatorInterface::class)
+        $this->assertInstanceOf(
+            LogicalAndValidator::class,
+            new LogicalAndValidator(
+                $this->createMock(ValidatorInterface::class)
+            )
         );
     }
 
@@ -42,12 +46,12 @@ class LogicalAndValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvoke($value, int $expectedCalls, bool $expected)
     {
-        $trueValidator = $this->createMock(ValidatorInterface::class);
-        $trueValidator->expects($this->exactly($expectedCalls))
+        $boolValidator = $this->createMock(ValidatorInterface::class);
+        $boolValidator->expects($this->exactly($expectedCalls))
             ->method('__invoke')
             ->willReturnArgument(0);
 
-        $validator = new LogicalAndValidator($trueValidator);
+        $validator = new LogicalAndValidator($boolValidator);
         $this->assertEquals($expected, call_user_func($validator, $value));
     }
 

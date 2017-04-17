@@ -6,28 +6,41 @@
 
 namespace WideFocus\Validator\Tests\Logical;
 
-use PHPUnit_Framework_TestCase;
-use WideFocus\Validator\Logical\LogicalTrueValidator;
+use PHPUnit\Framework\TestCase;
+use WideFocus\Validator\Logical\LogicalBoolValidator;
 
 /**
- * @coversDefaultClass \WideFocus\Validator\Logical\LogicalTrueValidator
+ * @coversDefaultClass \WideFocus\Validator\Logical\LogicalBoolValidator
  */
-class LogicalTrueValidatorTest extends PHPUnit_Framework_TestCase
+class LogicalBoolValidatorTest extends TestCase
 {
     /**
-     * @param mixed $value
+     * @return void
+     *
+     * @covers ::__construct
+     */
+    public function testConstructor()
+    {
+        $this->assertInstanceOf(
+            LogicalBoolValidator::class,
+            new LogicalBoolValidator(true)
+        );
+    }
+
+    /**
+     * @param bool  $value
+     * @param mixed $input
      * @param bool  $expected
      *
      * @return void
-     *
      * @dataProvider valueProvider
      *
      * @covers ::__invoke
      */
-    public function testInvoke($value, bool $expected)
+    public function testInvoke(bool $value, $input, bool $expected)
     {
-        $validator = new LogicalTrueValidator();
-        $this->assertEquals($expected, call_user_func($validator, $value));
+        $validator = new LogicalBoolValidator($value);
+        $this->assertEquals($expected, call_user_func($validator, $input));
     }
 
     /**
@@ -38,29 +51,40 @@ class LogicalTrueValidatorTest extends PHPUnit_Framework_TestCase
         return [
             'simple_true' => [
                 true,
+                true,
+                true
+            ],
+            'inversed_true' => [
+                false,
+                false,
                 true
             ],
             'simple_false' => [
+                true,
                 false,
                 false
             ],
             'callback_true' => [
+                true,
                 function () : bool {
                     return true;
                 },
                 true
             ],
             'callback_false' => [
+                true,
                 function () : bool {
                     return false;
                 },
                 false
             ],
             'evaluate_true' => [
+                true,
                 'some_text',
                 true
             ],
             'evaluate_false' => [
+                true,
                 '',
                 false
             ]

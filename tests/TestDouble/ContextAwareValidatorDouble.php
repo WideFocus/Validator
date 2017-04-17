@@ -17,11 +17,11 @@ class ContextAwareValidatorDouble implements ContextAwareValidatorInterface
     /**
      * Validate a value.
      *
-     * @param mixed $value
+     * @param mixed $input
      *
      * @return bool
      */
-    public function __invoke($value): bool
+    public function __invoke($input): bool
     {
         return true;
     }
