@@ -7,13 +7,13 @@
 namespace WideFocus\Validator\Tests;
 
 use ArrayAccess;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use WideFocus\Validator\Tests\TestDouble\ContextAwareValidatorDouble;
 
 /**
  * @coversDefaultClass \WideFocus\Validator\ContextAwareValidatorTrait
  */
-class ContextAwareValidatorTraitTest extends PHPUnit_Framework_TestCase
+class ContextAwareValidatorTraitTest extends TestCase
 {
     /**
      * @param ArrayAccess|null $context
